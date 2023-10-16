@@ -1,14 +1,23 @@
 import React from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+
+
+
+
+
+
+
 
 function AddFamilyMember() {
   return (
     <div className="container">
       <p>Add Family Member</p>
+      <TextField id="filled-basic" label="NAME" variant="filled" />
+      <br></br>
+      <br></br>
+      <Button variant="contained">Add</Button>
     </div>
   );
 }
