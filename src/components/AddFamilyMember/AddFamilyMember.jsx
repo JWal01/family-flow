@@ -5,12 +5,18 @@ import Button from '@mui/material/Button';
 
 
 
-
-
-
-
-
 function AddFamilyMember() {
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <div className="container">
       <p>Add Family Member</p>
@@ -23,3 +29,4 @@ function AddFamilyMember() {
 }
 
 export default AddFamilyMember;
+
