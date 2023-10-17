@@ -38,7 +38,7 @@ function AddFamilyMember() {
     }
   
     axios.post('/api/member', {
-      member_name: '',
+      member_name: memberName,
     })
       .then(response => {
         setMemberName('');
