@@ -13,7 +13,9 @@ function AddFamilyMember() {
   const [memberList, setMemberList] = useState([]);
   const [memberName, setMemberName] = useState('');
 
- 
+  useEffect(() => {
+    fetchMember();
+  }, []);
 
   const fetchMember = () => {
     axios.get('/api/member').then((response) => {
@@ -29,15 +31,20 @@ function AddFamilyMember() {
 
   const addMember = (e) => {
     e.preventDefault();
-      axios.post('/api/member', {
-        member_name: memberName,
-      })
+    if (!memberName) {
+      alert('Please enter a family member name.');
+      return;
+    }
+  
+    axios.post('/api/member', {
+      member_name: memberName,
+    })
       .then(response => fetchMember())
       .catch(error => {
         console.error(error);
         alert('Something went wrong.');
       });
-    }
+  }
   
 
 
@@ -46,10 +53,10 @@ function AddFamilyMember() {
     <div className="container">
       <p>Add Family Member</p>
       <form onSubmit={addMember}>
-      <TextField id="filled-basic" label="NAME" variant="filled" value={memberName} onChange={e => setMemberName (e.target.value)} />
-      <br></br>
-      <br></br>
-      <Button variant="contained">Add</Button>
+        <TextField id="filled-basic" label="NAME" variant="filled" value={memberName} onChange={e => setMemberName(e.target.value)} />
+        <br></br>
+        <br></br>
+        <Button variant="contained" type="submit">Add</Button>
       </form>
     </div>
   );
