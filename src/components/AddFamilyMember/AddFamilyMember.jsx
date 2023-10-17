@@ -27,17 +27,17 @@ function AddFamilyMember() {
 
 
 
-  // const addMember = (e) => {
-  //   e.preventDefault();
-  //     axios.post('/api/member', {
-  //       member_name: memberName,
-  //     })
-  //     .then(response => fetchMember())
-  //     .catch(error => {
-  //       console.error(error);
-  //       alert('Something went wrong.');
-  //     });
-  //   }
+  const addMember = (e) => {
+    e.preventDefault();
+      axios.post('/api/member', {
+        member_name: memberName,
+      })
+      .then(response => fetchMember())
+      .catch(error => {
+        console.error(error);
+        alert('Something went wrong.');
+      });
+    }
   
 
 
