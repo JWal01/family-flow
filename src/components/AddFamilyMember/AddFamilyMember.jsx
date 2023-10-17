@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './AddFamilyMember.css';
 
 
 
@@ -37,9 +38,12 @@ function AddFamilyMember() {
     }
   
     axios.post('/api/member', {
-      member_name: memberName,
+      member_name: '',
     })
-      .then(response => fetchMember())
+      .then(response => {
+        setMemberName('');
+        fetchMember()
+      })
       .catch(error => {
         console.error(error);
         alert('Something went wrong.');
@@ -51,12 +55,14 @@ function AddFamilyMember() {
 
   return (
     <div className="container">
-      <p>Add Family Member</p>
+      <p className="header" >Add Family Member</p>
+      <br></br>
+      <br></br>
       <form onSubmit={addMember}>
         <TextField id="filled-basic" label="NAME" variant="filled" value={memberName} onChange={e => setMemberName(e.target.value)} />
         <br></br>
         <br></br>
-        <Button variant="contained" type="submit">Add</Button>
+        <Button className="add-button" variant="contained" type="submit">Add</Button>
       </form>
     </div>
   );
