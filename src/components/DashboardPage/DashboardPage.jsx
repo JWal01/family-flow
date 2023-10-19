@@ -1,5 +1,9 @@
 import { useSelector } from 'react-redux';
 
+useEffect(() => {
+  DashboardPage();
+}, []);
+
 function DashboardPage() {
   const memberList = useSelector(store => store.memberList);
   console.log('Received MemberList:', memberList);
