@@ -10,9 +10,12 @@ import './AddFamilyMember.css';
 
 
 
-function AddFamilyMember({ onAddMember }) {
+function AddFamilyMember() {
+  
   const [memberList, setMemberList] = useState([]);
   const [memberName, setMemberName] = useState('');
+  
+ 
 
   useEffect(() => {
     fetchMember();
@@ -21,7 +24,7 @@ function AddFamilyMember({ onAddMember }) {
   const fetchMember = () => {
     axios.get('/api/member').then((response) => {
       setMemberList(response.data);
-      console.log(response.data);
+      console.log("member data fetched", response.data);
     }).catch((error) => {
       console.log(error);
       alert('Something went wrong.');
@@ -43,7 +46,6 @@ function AddFamilyMember({ onAddMember }) {
       .then(response => {
         setMemberName('');
         fetchMember();
-        onAddMember(response.data);
       })
       .catch(error => {
         console.error(error);

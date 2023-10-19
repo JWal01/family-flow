@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   HashRouter as Router,
   Redirect,
@@ -26,6 +26,7 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
+  const [memberList, setMemberList] = useState([]);
 
   const user = useSelector(store => store.user);
 
@@ -81,7 +82,7 @@ function App() {
           exact
           path="/DashboardPage"
           >
-            <DashboardPage />
+            <DashboardPage memberList={memberList} />
 
           </ProtectedRoute>
 

@@ -1,14 +1,15 @@
 import React from 'react';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
-
-function DashboardPage() {
+function DashboardPage({ memberList }) {
+  console.log("Received memberList:", memberList); 
   return (
-    <div className="container">
-      <p>Dashboard</p>
+    <div className="dashboard">
+      <h1>Welcome to the Dashboard</h1>
+      <div className="member-buttons">
+        {memberList.map(member => (
+          <button key={member.id}>{member.member_name}</button>
+        ))}
+      </div>
     </div>
   );
 }
