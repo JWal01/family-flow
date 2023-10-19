@@ -1,7 +1,9 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 
-function DashboardPage({ memberList }) {
-  console.log("Received memberList:", memberList); 
+function DashboardPage() {
+  const memberList = useSelector(store => store.memberList);
+  console.log('Received MemberList:', memberList);
+
   return (
     <div className="dashboard">
       <h1>Welcome to the Dashboard</h1>

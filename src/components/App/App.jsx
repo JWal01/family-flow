@@ -26,7 +26,7 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const [memberList, setMemberList] = useState([]);
+ 
 
   const user = useSelector(store => store.user);
 
@@ -82,7 +82,7 @@ function App() {
           exact
           path="/DashboardPage"
           >
-            <DashboardPage memberList={memberList} />
+            <DashboardPage />
 
           </ProtectedRoute>
 
