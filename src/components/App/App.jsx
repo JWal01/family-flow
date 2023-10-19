@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   HashRouter as Router,
   Redirect,
@@ -20,11 +20,13 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddFamilyMember from '../AddFamilyMember/AddFamilyMember';
+import DashboardPage from '../DashboardPage/DashboardPage';
 
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
+ 
 
   const user = useSelector(store => store.user);
 
@@ -74,6 +76,14 @@ function App() {
           path="/addFamilyMember"
           >
             <AddFamilyMember />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/DashboardPage"
+          >
+            <DashboardPage />
+
           </ProtectedRoute>
 
           <Route
