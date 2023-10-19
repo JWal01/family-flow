@@ -10,7 +10,7 @@ import './AddFamilyMember.css';
 
 
 
-function AddFamilyMember() {
+function AddFamilyMember({ onAddMember }) {
   const [memberList, setMemberList] = useState([]);
   const [memberName, setMemberName] = useState('');
 
@@ -42,7 +42,8 @@ function AddFamilyMember() {
     })
       .then(response => {
         setMemberName('');
-        fetchMember()
+        fetchMember();
+        onAddMember(response.data);
       })
       .catch(error => {
         console.error(error);
