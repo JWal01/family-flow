@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddFamilyMember from '../AddFamilyMember/AddFamilyMember';
 import DashboardPage from '../DashboardPage/DashboardPage';
+import AddEventPage from '../AddEventPage/AddEventPage';
 
 import './App.css';
 
@@ -83,6 +84,14 @@ function App() {
           path="/DashboardPage"
           >
             <DashboardPage />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/AddEventPage"
+          >
+            <AddEventPage />
 
           </ProtectedRoute>
 
