@@ -72,7 +72,7 @@ function addEvent() {
       />
       <TextField
         name="startDate"
-        label="Start Date"
+        // label="Start Date"
         variant="outlined"
         fullWidth
         type="date" // Use the type attribute for date input
