@@ -15,7 +15,7 @@ function AddFamilyMember() {
   const dispatch = useDispatch();
   const memberList = useSelector((store) => store.memberList);
   // const [memberList, setMemberList] = useState([]);
-  const [memberName, setMemberName] = useState('');
+  // const [memberName, setMemberName] = useState('');
   
  
 

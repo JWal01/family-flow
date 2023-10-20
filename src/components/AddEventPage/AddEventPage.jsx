@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 function addEvent() {
+  const dispatch = useDispatch();
+  const eventsList = useSelector((store) => store.eventsList);
+  
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
@@ -13,6 +16,9 @@ function addEvent() {
     startTime: '',
     startDate: '',
   });
+
+  
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,14 +28,16 @@ function addEvent() {
     });
   };
 
-  const handleSubmit = (e) => {
+ 
+
+  const addEvent = (e) => {
     e.preventDefault();
-    // You can submit the eventData to your backend or perform any other necessary actions here.
-    console.log(eventData);
+    dispatch ({ type: 'ADD_EVENTS', payload: eventData })
   };
+  console.log('add events', eventData);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={addEvent}>
       <TextField
         name="title"
         label="Title"
