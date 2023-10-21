@@ -15,7 +15,7 @@ function AddFamilyMember() {
   const dispatch = useDispatch();
   const memberList = useSelector((store) => store.memberList);
   // const [memberList, setMemberList] = useState([]);
-  // const [memberName, setMemberName] = useState('');
+  const [memberName, setMemberName] = useState('');
   
  
 
@@ -31,27 +31,6 @@ function AddFamilyMember() {
     e.preventDefault();
     dispatch ({ type: 'ADD_MEMBER', payload: { member_name: memberName } })
   }
-
-  // const addMember = (e) => {
-  //   e.preventDefault();
-  //   if (!memberName) {
-  //     alert('Please enter a family member name.');
-  //     return;
-  //   }
-  
-  //   axios.post('/api/member', {
-  //     member_name: memberName,
-  //   })
-  //     .then(response => {
-  //       setMemberName('');
-  //       fetchMember();
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //       alert('Something went wrong.');
-  //     });
-  // }
-  
 
 
 

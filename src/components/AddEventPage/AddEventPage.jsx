@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem'; 
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -8,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 function addEvent() {
   const dispatch = useDispatch();
   const eventsList = useSelector((store) => store.eventsList);
+  const memberList = useSelector((store) => store.memberList);
+  const [familyMemberId, setFamilyMemberId] = useState('');
   
   const [eventData, setEventData] = useState({
     title: '',
@@ -15,6 +18,7 @@ function addEvent() {
     location: '',
     startTime: '',
     startDate: '',
+    familyMemberId: '',
   });
 
   
@@ -34,7 +38,16 @@ function addEvent() {
     e.preventDefault();
     dispatch ({ type: 'ADD_EVENTS', payload: eventData })
   };
-  console.log('add events', eventData);
+  
+
+  // setEventData({
+  //   title: '',
+  //   description: '',
+  //   location: '',
+  //   startTime: '',
+  //   startDate: '',
+  //   familyMemberId: '',
+  // });
 
   return (
     <form onSubmit={addEvent}>
@@ -79,6 +92,21 @@ function addEvent() {
         value={eventData.startDate}
         onChange={handleChange}
       />
+       <TextField
+        name="familyMemberId"
+        select
+        label="Select Family Member"
+        variant="outlined"
+        fullWidth
+        value={eventData.familyMemberId}
+        onChange={handleChange}
+      >
+        {memberList.map((member) => (
+          <MenuItem key={member.id} value={member.id}>
+            {member.member_name}
+          </MenuItem>
+        ))}
+      </TextField>
       <Button
         variant="contained"
         color="primary"
