@@ -26,9 +26,11 @@ function* addEvents(action) {
 
 
 
+
 function* eventSaga() {
   yield takeLatest('FETCH_EVENTS_LIST', fetchEvents);
   yield takeLatest('ADD_EVENTS', addEvents );
+
 }
 
 export default eventSaga;

@@ -15,6 +15,16 @@ CREATE TABLE "family_member" (
     "user_id" INT REFERENCES "user"
 );
 
+-- CREATE TABLE "events" (
+--     "event_id" SERIAL PRIMARY KEY,
+--     "title" VARCHAR(255) NOT NULL,
+--     "description" TEXT,
+--     "location" VARCHAR(255),
+--     "start_time" TIME,
+--     "start_date" DATE,
+--     "family_member_id" INT REFERENCES "family_member(id)",
+-- );
+
 CREATE TABLE "events" (
     "event_id" SERIAL PRIMARY KEY,
     "title" VARCHAR(255) NOT NULL,
@@ -22,5 +32,6 @@ CREATE TABLE "events" (
     "location" VARCHAR(255),
     "start_time" TIME,
     "start_date" DATE,
-    "family_member_id" INT REFERENCES "family_member(id)",
+    "family_member_id" INT REFERENCES "family_member"("id")
 );
+

@@ -22,6 +22,25 @@ router.get('/', (req, res) => {
   }
 });
 
+router.get('/:familyMemberId', (req, res) => {
+  if (req.isAuthenticated()) {
+    const familyMemberId = req.params.familyMemberId;
+    const queryText = `SELECT * FROM "events" WHERE "family_member_id" = $1;`;
+
+    pool
+      .query(queryText, [familyMemberId])
+      .then((result) => {
+        res.send(result.rows);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(401);
+  }
+});
+
 /**
  * POST route template
  */
@@ -37,7 +56,7 @@ router.post('/', (req, res) => {
       let queryText = `INSERT INTO "events" ("title","description", "location", "start_date", "start_time", family_member_id) 
       VALUES ($1, $2, $3, $4, $5, $6);`;
     // ! req.user.id is the currently logged in users id  
-    pool.query(queryText, [req.body.title, req.body.description, req.body.location, req.body.startDate, req.body.startTime,req.user.id])  
+    pool.query(queryText, [req.body.title, req.body.description, req.body.location, req.body.startDate, req.body.startTime,req.body.familyMemberId])  
       .then(results => {
           res.sendStatus(201);
       }).catch(error => {

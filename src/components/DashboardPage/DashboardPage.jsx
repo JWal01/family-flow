@@ -5,15 +5,11 @@ import { useDispatch } from 'react-redux';
 
 function DashboardPage() {
   const memberList = useSelector(store => store.memberList);
-  console.log('Received MemberList:', memberList);
   const dispatch = useDispatch();
 
-  // const handleClick = (familyMemberId) => {
-  //   dispatch({
-  //     type: 'FETCH_EVENTS_FOR_MEMBER',
-  //     payload: { familyMemberID }, 
-  //   })
-  // }
+ 
+
+  
 
   return (
     <div className="dashboard">
