@@ -24,12 +24,25 @@ function* addEvents(action) {
 }
 
 
+function* fetchEventsForFamilyMember(action) {
+  try {
+    const familyMemberId = action.payload;
+    const response = yield axios.get(`/api/events/familyMember/${familyMemberId}`);
+    yield put({ type: 'SET_EVENTS_FOR_FAMILY_MEMBER', payload: response.data });
+  } catch (error) {
+    console.log('ERROR in fetchEventsForFamilyMember', error);
+  }
+}
+
+
+
 
 
 
 function* eventSaga() {
   yield takeLatest('FETCH_EVENTS_LIST', fetchEvents);
   yield takeLatest('ADD_EVENTS', addEvents );
+  yield takeLatest('FETCH_EVENTS_FOR_FAMILY_MEMBER', fetchEventsForFamilyMember);
 
 }
 

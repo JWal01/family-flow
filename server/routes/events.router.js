@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
   }
 });
 
-router.get('/:familyMemberId', (req, res) => {
+router.get('/familyMember/:familyMemberId', (req, res) => {
   if (req.isAuthenticated()) {
     const familyMemberId = req.params.familyMemberId;
     const queryText = `SELECT * FROM "events" WHERE "family_member_id" = $1;`;
@@ -67,6 +67,27 @@ router.post('/', (req, res) => {
       res.sendStatus(401);
   }   
 });
+
+router.delete('/:eventId', (req, res) => {
+  if (req.isAuthenticated()) {
+    const eventId = req.params.eventId;
+    const queryText = `DELETE FROM "events" WHERE "event_id" = $1 AND "family_member_id" = $2;`;
+
+    pool
+      .query(queryText, [eventId, req.user.id])
+      .then(() => {
+        res.sendStatus(204); // No content, successful deletion
+      })
+      .catch((error) => {
+        console.log(error);
+        res.sendStatus(500); // Internal server error
+      });
+  } else {
+    res.sendStatus(401); // Unauthorized
+  }
+});
+
+
 
 
 
