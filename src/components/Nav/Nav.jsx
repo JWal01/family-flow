@@ -40,6 +40,10 @@ function Nav() {
               Add Family Member
             </Link>
 
+            <Link className="navLink" to="/AddEventPage">
+              Add Event
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}

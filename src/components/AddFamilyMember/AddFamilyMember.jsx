@@ -32,27 +32,6 @@ function AddFamilyMember() {
     dispatch ({ type: 'ADD_MEMBER', payload: { member_name: memberName } })
   }
 
-  // const addMember = (e) => {
-  //   e.preventDefault();
-  //   if (!memberName) {
-  //     alert('Please enter a family member name.');
-  //     return;
-  //   }
-  
-  //   axios.post('/api/member', {
-  //     member_name: memberName,
-  //   })
-  //     .then(response => {
-  //       setMemberName('');
-  //       fetchMember();
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //       alert('Something went wrong.');
-  //     });
-  // }
-  
-
 
 
   return (
