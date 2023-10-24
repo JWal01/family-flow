@@ -34,6 +34,17 @@ function* fetchEventsForFamilyMember(action) {
   }
 }
 
+function* deleteEvents(action) {
+  try{
+    const eventId =  action.payload;
+    yield axios.delete(`/api/events/${eventId}`);
+    yield put({ type: "DELETE_SUCCESS", payload: eventId });
+    
+  }catch (error) {
+    console.log("ERROR in deleteEvents", error);
+    alert('Something went wrong!')
+  }
+}
 
 
 
@@ -43,6 +54,7 @@ function* eventSaga() {
   yield takeLatest('FETCH_EVENTS_LIST', fetchEvents);
   yield takeLatest('ADD_EVENTS', addEvents );
   yield takeLatest('FETCH_EVENTS_FOR_FAMILY_MEMBER', fetchEventsForFamilyMember);
+  yield takeLatest('DELETE_EVENTS', deleteEvents);
 
 }
 
