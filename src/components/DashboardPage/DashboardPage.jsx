@@ -23,6 +23,8 @@ function DashboardPage() {
   const dispatch = useDispatch();
   const [selectedFamilyMember, setSelectedFamilyMember] = useState('');
 
+  
+
  
 
   const handleClick = (familyMemberId) => {
@@ -30,12 +32,14 @@ function DashboardPage() {
     dispatch({ type: 'FETCH_EVENTS_FOR_FAMILY_MEMBER', payload: familyMemberId });
   };
 
+
   const handleDelete = (eventId) => {
-    dispatch ({ type: 'DELETE_EVENTS', payload: eventId });
-    dispatch({ type: 'FETCH_EVENTS_LIST' }); 
-    
+    dispatch ({ type: 'DELETE_EVENTS', payload: eventId })
   };
 
+  useEffect(() => {
+    console.log('Updated eventsList:', eventsList);
+  }, [eventsList]);
 
 
 
@@ -56,7 +60,7 @@ function DashboardPage() {
           {eventsList
             .filter((event) => event.family_member_id === selectedFamilyMember)
             .map((event) => (
-              <li key={event.event_id}>{event.title}, {event.description},{event.location},  {formatDateTime(event.start_date)}
+              <li key={event.event_id}>{event.title}, {event.description},{event.location},  {formatDateTime(event.start_date, event.start_time)}
               <button onClick={() => handleDelete(event.event_id)} className="delete-button" >Delete</button>
               </li>
             ))}

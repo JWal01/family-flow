@@ -4,8 +4,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 //GET
 function* fetchEvents() {
   try {
-    let response = yield axios.get('api/events');
-    console.log('fetched events data in saga', response.data);
+    let response = yield axios.get('/api/events');
+    console.log('Response from API:', response.data);
     yield put({ type: 'SET_EVENTS_LIST', payload: response.data});
   } catch (error) {
     console.log(('ERROR in fetchEvents', error));
@@ -39,6 +39,7 @@ function* deleteEvents(action) {
     const eventId =  action.payload;
     yield axios.delete(`/api/events/${eventId}`);
     yield put({ type: "DELETE_SUCCESS", payload: eventId });
+    console.log('delete successful');
     
   }catch (error) {
     console.log("ERROR in deleteEvents", error);
@@ -51,11 +52,10 @@ function* deleteEvents(action) {
 
 
 function* eventSaga() {
+  yield takeLatest('DELETE_EVENTS', deleteEvents);
   yield takeLatest('FETCH_EVENTS_LIST', fetchEvents);
   yield takeLatest('ADD_EVENTS', addEvents );
   yield takeLatest('FETCH_EVENTS_FOR_FAMILY_MEMBER', fetchEventsForFamilyMember);
-  yield takeLatest('DELETE_EVENTS', deleteEvents);
-
-}
+  };
 
 export default eventSaga;

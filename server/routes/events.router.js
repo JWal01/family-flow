@@ -75,14 +75,14 @@ router.delete('/:event_id', (req, res) => {
     pool
       .query(queryText, [eventId])
       .then((result) => {
-        res.sendStatus(200); // Successful deletion
+        res.sendStatus(200); 
       })
       .catch((error) => {
         console.log(error);
-        res.sendStatus(500); // Internal Server Error
+        res.sendStatus(500); 
       });
   } else {
-    res.sendStatus(401); // Unauthorized
+    res.sendStatus(401); 
   }
 });
 
