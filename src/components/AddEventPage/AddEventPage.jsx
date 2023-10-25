@@ -40,15 +40,6 @@ function addEvent() {
   };
   
 
-  // setEventData({
-  //   title: '',
-  //   description: '',
-  //   location: '',
-  //   startTime: '',
-  //   startDate: '',
-  //   familyMemberId: '',
-  // });
-
   return (
     <form onSubmit={addEvent}>
       <TextField
