@@ -51,11 +51,12 @@ router.post('/', (req, res) => {
   console.log('is authenticated?', req.isAuthenticated());
   if(req.isAuthenticated()) {
       console.log('user', req.user);
-      // Add the pet to our database
-      let queryText = `INSERT INTO "events" ("title","description", "location", "start_date", "start_time", family_member_id) 
+     
+      
+      let queryText = `INSERT INTO "events" ("title", "description", "location", "start_date", "start_time", "family_member_id") 
       VALUES ($1, $2, $3, $4, $5, $6);`;
-    // ! req.user.id is the currently logged in users id  
-    pool.query(queryText, [req.body.title, req.body.description, req.body.location, req.body.startDate, req.body.startTime,req.body.familyMemberId])  
+    
+    pool.query(queryText, [req.body.title, req.body.description, req.body.location, req.body.startDate, req.body.startTime, req.body.familyMemberId]) 
       .then(results => {
           res.sendStatus(201);
       }).catch(error => {

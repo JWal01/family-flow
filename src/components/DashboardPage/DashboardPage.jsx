@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './DashboardPage.css';
+const { DateTime,Settings } = require("luxon");
 
 
 
 
 
-function formatDateTime(dateTimeString) {
-  const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  };
-  return new Date(dateTimeString).toLocaleString(undefined, options);
+function formatDateTime(dateString, timeString) {
+  if (dateString && timeString) {
+    // Parse the date and time strings
+    const combinedDate = DateTime.fromISO(dateString);
+    const time = DateTime.fromFormat(timeString, 'HH:mm:ss');
+
+    // Create a new DateTime by combining the date and time
+    const combinedDateTime = combinedDate.set({ hour: time.hour, minute: time.minute, second: time.second });
+
+    // Format the combined date and time to a desired format
+    return combinedDateTime.toFormat('yyyy-MM-dd hh:mm:ss a');
+  }
+  return '';
 }
+
+
+
 
 function DashboardPage() {
   const memberList = useSelector((store) => store.memberList);
   const eventsList = useSelector((store) => store.eventsList); 
   const dispatch = useDispatch();
   const [selectedFamilyMember, setSelectedFamilyMember] = useState('');
+  
 
   
 
@@ -40,9 +49,10 @@ function DashboardPage() {
   useEffect(() => {
     console.log('Updated eventsList:', eventsList);
   }, [eventsList]);
+  
 
 
-
+ 
 
   return (
     <div className="dashboard">
@@ -60,7 +70,7 @@ function DashboardPage() {
           {eventsList
             .filter((event) => event.family_member_id === selectedFamilyMember)
             .map((event) => (
-              <li key={event.event_id}>{event.title}, {event.description},{event.location},  {formatDateTime(event.start_date, event.start_time)}
+              <li key={event.event_id}>{event.title}, {event.description},{event.location}, {formatDateTime(event.start_date, event.start_time)}
               <button onClick={() => handleDelete(event.event_id)} className="delete-button" >Delete</button>
               </li>
             ))}

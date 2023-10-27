@@ -1,18 +1,39 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Typography, Container, Button } from '@mui/material';
 
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  // Check if the user has enough information to be considered a new user
+  const isNewUser = !user.username || !user.id;
+
   return (
-    <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <LogOutButton className="btn" />
-    </div>
+    <Container maxWidth="md">
+      <Typography variant="h4" component="h2" gutterBottom>
+        Welcome to FAMILY FLOW, {user.username || 'New User'}!
+        <br />
+      </Typography>
+      {isNewUser ? (
+        <Typography variant="body1" gutterBottom>
+          Let's add family members to get started.
+        </Typography>
+      ) : (
+        <Typography variant="body1" gutterBottom>
+          Your user ID is: {user.id}
+        </Typography>
+      )}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => dispatch({ type: 'LOGOUT' })}
+      >
+        Log Out
+      </Button>
+    </Container>
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;
