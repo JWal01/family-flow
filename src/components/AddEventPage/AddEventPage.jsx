@@ -70,7 +70,7 @@ function addEvent() {
       />
       <TextField
         name="startTime"
-        label="Start Time"
+        // label="Start Time"
         variant="outlined"
         fullWidth
         type="time"

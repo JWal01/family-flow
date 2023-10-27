@@ -9,14 +9,12 @@ const { DateTime,Settings } = require("luxon");
 
 function formatDateTime(dateString, timeString) {
   if (dateString && timeString) {
-    // Parse the date and time strings
+   
     const combinedDate = DateTime.fromISO(dateString);
     const time = DateTime.fromFormat(timeString, 'HH:mm:ss');
 
-    // Create a new DateTime by combining the date and time
     const combinedDateTime = combinedDate.set({ hour: time.hour, minute: time.minute, second: time.second });
 
-    // Format the combined date and time to a desired format
     return combinedDateTime.toFormat('yyyy-MM-dd hh:mm:ss a');
   }
   return '';
