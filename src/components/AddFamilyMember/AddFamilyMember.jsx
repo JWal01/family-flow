@@ -30,6 +30,7 @@ function AddFamilyMember() {
   const addMember = (e) => {
     e.preventDefault();
     dispatch ({ type: 'ADD_MEMBER', payload: { member_name: memberName } })
+    setMemberName("");
   }
 
 

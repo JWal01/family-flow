@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 router.get('/familyMember/:familyMemberId', (req, res) => {
   if (req.isAuthenticated()) {
     const familyMemberId = req.params.familyMemberId;
-    const queryText = `SELECT * FROM "events" WHERE "family_member_id" = $1;`;
+    const queryText = `SELECT * FROM "events" WHERE "family_member_id" = $1 ORDER BY "event_id" ASC;`;
     pool
       .query(queryText, [familyMemberId])
       .then((result) => {
@@ -67,6 +67,27 @@ router.post('/', (req, res) => {
       res.sendStatus(401);
   }   
 });
+
+router.put('/:event_id', (req, res) => {
+  if (req.isAuthenticated()) {
+    const eventId = req.params.event_id;
+    const updatedDescription = req.body.description; // 
+    const queryText = 'UPDATE "events" SET "description" = $1 WHERE "event_id" = $2;';
+    pool
+      .query(queryText, [updatedDescription, eventId])
+      .then((result) => {
+        res.sendStatus(200); // Successful update
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(500); // Internal server error
+      });
+  } else {
+    res.sendStatus(401); // Unauthorized
+  }
+});
+
+
 
 router.delete('/:event_id', (req, res) => {
   if (req.isAuthenticated()) {
