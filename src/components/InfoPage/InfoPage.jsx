@@ -1,6 +1,5 @@
 import React from 'react';
-import './InfoPage.css'; // Make sure to create and import the corresponding CSS file
-
+import './InfoPage.css'; 
 function InfoPage() {
   return (
     <div className="info-container">
