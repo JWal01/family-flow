@@ -55,17 +55,12 @@ function DashboardPage() {
     dispatch({ type: 'DELETE_EVENTS', payload: eventId });
   };
 
-  // useEffect(() => {
-  //   if (isEditingEvent === null) {
-  //     setEditedDescription('');
-  //   }
-  // }, [isEditingEvent]);
+ 
 
   useEffect(() => {
-    // Fetch family members automatically when the dashboard is mounted
+   
     dispatch({ type: 'FETCH_MEMBER_LIST' });
 
-    // Existing useEffect logic
     if (isEditingEvent === null) {
       setEditedDescription('');
     }

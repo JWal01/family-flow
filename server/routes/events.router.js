@@ -76,14 +76,14 @@ router.put('/:event_id', (req, res) => {
     pool
       .query(queryText, [updatedDescription, eventId])
       .then((result) => {
-        res.sendStatus(200); // Successful update
+        res.sendStatus(200); 
       })
       .catch((error) => {
         console.error(error);
-        res.sendStatus(500); // Internal server error
+        res.sendStatus(500); 
       });
   } else {
-    res.sendStatus(401); // Unauthorized
+    res.sendStatus(401); 
   }
 });
 

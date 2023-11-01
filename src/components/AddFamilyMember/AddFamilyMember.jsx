@@ -31,6 +31,7 @@ function AddFamilyMember() {
     e.preventDefault();
     dispatch ({ type: 'ADD_MEMBER', payload: { member_name: memberName } })
     setMemberName("");
+    alert('Family member added successfully!'); 
   }
 
 
