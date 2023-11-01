@@ -45,6 +45,7 @@ function DashboardPage() {
       },
     });
     window.alert("Event edited successfully");
+   
     setEditingEvent(null);
     setEditedDescription('');
   };
