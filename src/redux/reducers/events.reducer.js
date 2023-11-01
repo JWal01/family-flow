@@ -9,6 +9,14 @@ const eventsList = (state = [], action) => {
       case 'DELETE_SUCCESS':
         const eventToDelete = action.payload;
         return state.filter((event) => event.event_id !== eventToDelete);
+
+        case 'UPDATE_EVENT_DESCRIPTION_SUCCESS':
+          return state.map((event) =>
+            event.event_id === action.payload.eventId
+              ? { ...event, description: action.payload.updatedDescription }
+              : event
+          );
+
   
 
       default:

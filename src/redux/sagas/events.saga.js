@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put,call, takeLatest } from 'redux-saga/effects';
 
 //GET
 function* fetchEvents() {
@@ -34,6 +34,18 @@ function* fetchEventsForFamilyMember(action) {
   }
 }
 
+function* updateEventDescription(action) {
+  try {
+    const { eventId, updatedDescription } = action.payload;
+    yield call(axios.put, `/api/events/${eventId}`, { description: updatedDescription });
+    yield put({ type: 'UPDATE_EVENT_DESCRIPTION_SUCCESS', payload: { eventId, updatedDescription } });
+    yield put({ type: 'FETCH_EVENTS_LIST' });
+
+  } catch (error) {
+    console.log('Error in updateEventDescription', error);
+  }
+}
+
 function* deleteEvents(action) {
   try{
     const eventId =  action.payload;
@@ -56,6 +68,7 @@ function* eventSaga() {
   yield takeLatest('FETCH_EVENTS_LIST', fetchEvents);
   yield takeLatest('ADD_EVENTS', addEvents );
   yield takeLatest('FETCH_EVENTS_FOR_FAMILY_MEMBER', fetchEventsForFamilyMember);
+  yield takeLatest('UPDATE_EVENT_DESCRIPTION', updateEventDescription);
   };
 
 export default eventSaga;

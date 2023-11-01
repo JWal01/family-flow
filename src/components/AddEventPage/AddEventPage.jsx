@@ -3,6 +3,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem'; 
 import { useSelector, useDispatch } from 'react-redux';
+const { DateTime,Settings } = require("luxon");
+
 
 
 
@@ -68,9 +70,10 @@ function addEvent() {
       />
       <TextField
         name="startTime"
-        label="Start Time"
+        // label="Start Time"
         variant="outlined"
         fullWidth
+        type="time"
         value={eventData.startTime}
         onChange={handleChange}
       />
@@ -79,7 +82,7 @@ function addEvent() {
         // label="Start Date"
         variant="outlined"
         fullWidth
-        type="date" // Use the type attribute for date input
+        type="date" 
         value={eventData.startDate}
         onChange={handleChange}
       />
