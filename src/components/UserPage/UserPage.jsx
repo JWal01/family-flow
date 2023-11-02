@@ -22,7 +22,7 @@ function UserPage() {
         </Typography>
       ) : (
         <Typography variant="body1" gutterBottom>
-          Your user ID is: {user.id}
+          {/* Your user ID is: {user.id} */}
         </Typography>
       )}
       <Button
