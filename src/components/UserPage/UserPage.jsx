@@ -7,7 +7,7 @@ import { Typography, Container, Button } from '@mui/material';
 function UserPage() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  // Check if the user has enough information to be considered a new user
+  
   const isNewUser = !user.username || !user.id;
 
   return (
