@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
 
-// CUSTOM COMPONENTS
+
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
