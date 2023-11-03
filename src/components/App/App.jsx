@@ -8,6 +8,7 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
+
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
@@ -22,7 +23,6 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddFamilyMember from '../AddFamilyMember/AddFamilyMember';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import AddEventPage from '../AddEventPage/AddEventPage';
-
 import './App.css';
 
 function App() {

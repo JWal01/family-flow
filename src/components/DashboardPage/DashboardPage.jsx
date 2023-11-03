@@ -4,6 +4,9 @@ import axios from 'axios';
 import './DashboardPage.css';
 const { DateTime, Settings } = require('luxon');
 
+
+
+
 function formatDateTime(dateString, timeString) {
   if (dateString && timeString) {
     const combinedDate = DateTime.fromISO(dateString);
@@ -45,6 +48,7 @@ function DashboardPage() {
       },
     });
     window.alert("Event edited successfully");
+   
     setEditingEvent(null);
     setEditedDescription('');
   };
@@ -69,7 +73,7 @@ function DashboardPage() {
 
   return (
     <div className="dashboard">
-      <h1>Welcome to the Dashboard</h1>
+      <h1>DASHBOARD</h1>
       <div className="member-buttons">
         {memberList.map((member) => (
           <button key={member.id} onClick={() => handleClick(member.id)}>
