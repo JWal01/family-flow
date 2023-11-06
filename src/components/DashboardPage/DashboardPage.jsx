@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './DashboardPage.css';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 const { DateTime, Settings } = require('luxon');
+
 
 
 
@@ -108,6 +112,11 @@ function DashboardPage() {
                     <button onClick={() => handleDelete(event.event_id)} className="delete-button">
                       Delete
                     </button>
+                      {/* <Tooltip title="Delete">
+                      <IconButton>
+                      <DeleteIcon onClick={() => handleDelete(event.event_id)}  />
+                      </IconButton>
+                      </Tooltip> */}
                     <button onClick={() => handleEdit(event.event_id, event.description)} className="edit-button" >
                       Edit
                     </button>
