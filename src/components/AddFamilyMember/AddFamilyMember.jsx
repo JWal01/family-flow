@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './AddFamilyMember.css';
+import Alert from '@mui/material/Alert'; 
+import Stack from '@mui/material/Stack'; 
 
 
 
@@ -16,6 +18,7 @@ function AddFamilyMember() {
   const memberList = useSelector((store) => store.memberList);
   // const [memberList, setMemberList] = useState([]);
   const [memberName, setMemberName] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   
  
 
@@ -31,13 +34,24 @@ function AddFamilyMember() {
     e.preventDefault();
     dispatch ({ type: 'ADD_MEMBER', payload: { member_name: memberName } })
     setMemberName("");
-    alert('Family member added successfully!'); 
+    setShowAlert(true);
+    // alert('Family member added successfully!'); 
   }
 
 
 
   return (
     <div className="container">
+          {showAlert && (
+          <Stack sx={{ width: '100%' }} spacing={2}>
+          <Alert
+          severity="success"
+          onClose={() => setShowAlert(false)}
+          >
+          Family member added successfully!
+          </Alert>
+          </Stack>
+    )}
       <p className="header" >Add Family Member</p>
       <br></br>
       <br></br>

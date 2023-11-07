@@ -22,7 +22,6 @@ function AboutPage() {
           Axios<br></br>
           Node<br></br>
           Express<br></br>
-          Material UI<br></br>
           Git<br></br>
           GitHub
         </Typography>

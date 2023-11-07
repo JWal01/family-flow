@@ -7,6 +7,7 @@ const { DateTime, Settings } = require('luxon');
 
 
 
+
 function formatDateTime(dateString, timeString) {
   if (dateString && timeString) {
     const combinedDate = DateTime.fromISO(dateString);
@@ -48,7 +49,7 @@ function DashboardPage() {
       },
     });
     window.alert("Event edited successfully");
-   
+    
     setEditingEvent(null);
     setEditedDescription('');
   };
@@ -108,6 +109,11 @@ function DashboardPage() {
                     <button onClick={() => handleDelete(event.event_id)} className="delete-button">
                       Delete
                     </button>
+                      {/* <Tooltip title="Delete">
+                      <IconButton>
+                      <DeleteIcon onClick={() => handleDelete(event.event_id)}  />
+                      </IconButton>
+                      </Tooltip> */}
                     <button onClick={() => handleEdit(event.event_id, event.description)} className="edit-button" >
                       Edit
                     </button>

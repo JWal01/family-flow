@@ -46,8 +46,6 @@ router.get('/familyMember/:familyMemberId', (req, res) => {
 router.post('/', (req, res) => {
   console.log('/events POST route');
   console.log(req.body);
-  // req.isAuthenticated is a function provided
-  // by passport. It returns either true or false. 
   console.log('is authenticated?', req.isAuthenticated());
   if(req.isAuthenticated()) {
       console.log('user', req.user);
