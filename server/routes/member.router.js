@@ -28,15 +28,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log('/member POST route');
   console.log(req.body);
-  // req.isAuthenticated is a function provided
-  // by passport. It returns either true or false. 
+ 
   console.log('is authenticated?', req.isAuthenticated());
   if(req.isAuthenticated()) {
       console.log('user', req.user);
-      // Add the pet to our database
       let queryText = `INSERT INTO "family_member" ("member_name", "user_id") 
       VALUES ($1, $2);`;
-    // ! req.user.id is the currently logged in users id  
     pool.query(queryText, [req.body.member_name, req.user.id])  
       .then(results => {
           res.sendStatus(201);
