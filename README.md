@@ -15,7 +15,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam at massa in
 
 Suspendisse euismod volutpat aliquet. Maecenas vulputate mauris in pellentesque facilisis. Phasellus varius malesuada semper. Cras sollicitudin diam mollis maximus aliquam.
 
-To see the fully functional site, please visit: [https://family-flow-eaafbfaf0891.herokuapp.com/#/home](www.heroku.com)
+To see the fully functional site, please visit: [https://family-flow-eaafbfaf0891.herokuapp.com/#/home]
 
 ## Screen Shot
 
