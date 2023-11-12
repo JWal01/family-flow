@@ -24,13 +24,14 @@ To see the fully functional site, please visit: [https://family-flow-eaafbfaf089
 
 ## Installation
 
-1. Create a `.env` file and add `SERVER_SESSION_SECRET=randomGeneratedPassword`. Use a strong password generator to create the random generated password.
-1. Create a database named `prime_app`,
-2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
-3. Open up your editor of choice and run an `npm install`
-4. Run `npm run server` in your terminal
-5. Run `npm run client` in your terminal
-6. The `npm run client` command will open up a new browser tab for you!
+1. Run npm install
+2. Create a `.env` file at the root of the project and paste this line into the file:
+`SERVER_SESSION_SECRET=superDuperSecret`
+While you're in your new `.env` file, take the time to replace superDuperSecret with some long random string like 25POUbVtx6RKVNWszd9ERB9Bb6 to keep your application secure. Here's a site that can help you: `https://passwordsgenerator.net/`. If you don't do this step, create a secret with less than eight characters, or leave it as superDuperSecret, you will get a warning.
+3. Start `postgres` if not running already by using `brew services start postgresql`
+4. Run `npm run server`
+5. Run `npm run client`
+6. Navigate to `localhost:3000`
 
 ## Usage
 As a parent or guardian, I want to have a convenient way to manage and organize family events and activities so that I can ensure that everyone in my family is informed about upcoming events and can participate in them.
