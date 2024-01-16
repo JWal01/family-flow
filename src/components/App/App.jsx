@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddFamilyMember from '../AddFamilyMember/AddFamilyMember';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import AddEventPage from '../AddEventPage/AddEventPage';
+import CalendarPage from '../CalendarPage/CalendarPage';
 import './App.css';
 
 function App() {
@@ -92,6 +93,14 @@ function App() {
           path="/AddEventPage"
           >
             <AddEventPage />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/CalendarPage"
+          >
+            <CalendarPage />
 
           </ProtectedRoute>
 

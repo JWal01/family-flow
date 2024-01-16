@@ -44,6 +44,10 @@ function Nav() {
               Add Event
             </Link>
 
+            <Link className="navLink" to="/CalendarPage">
+              Calendar 
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
